@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ZTE MF293N Band Lock Tool</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      max-width: 400px;
+      margin: auto;
+    }
+    select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>ZTE MF293N Band Lock</h2>
+    <label for="band">Select LTE Band:</label>
+    <select id="band">
+      <option value="0x18008000085">All Bands</option>
+      <option value="0x000000001">LTE Band 1</option>
+      <option value="0x000000004">LTE Band 3</option>
+      <option value="0x000000080">LTE Band 8</option>
+      <option value="0x008000000">LTE Band 28</option>
+      <option value="0x8000000000">LTE Band 40</option>
+      <option value="0x10000000000">LTE Band 41</option>
+    </select>
+    <button onclick="applyBand()">Apply</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function applyBand() {
+      const bandMask = document.getElementById("band").value;
+      fetch("http://192.168.254.254/goform/goform_set_cmd_process", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: "isTest=false&goformId=SET_BAND_SELECT&BandMask=" + encodeURIComponent(bandMask)
+      })
+      .then(r => r.text())
+      .then(res => {
+        document.getElementById("result").innerText = "Response: " + res;
+      })
+      .catch(err => {
+        document.getElementById("result").innerText = "Error: " + err;
+      });
+    }
+  </script>
+</body>
+</html>
